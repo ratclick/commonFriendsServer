@@ -4,7 +4,13 @@ var qs = require('qs')
 
 // https://api.twitter.com/1.1/
 const baseUrl = config.twitter.apiUrl;
-const token = config.twitter.token;
+let token = ''
+if(process.env.token){
+    token = process.env.token;
+}else{
+    token = config.twitter.token;
+}
+
 
 exports.getCall = (url, params) => {
     var target = baseUrl + url;
